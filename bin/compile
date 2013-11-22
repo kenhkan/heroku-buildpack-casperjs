@@ -27,9 +27,13 @@ mkdir -p $BUILD_DIR/vendor
 tar jxf $CACHE_DIR/$FILE_NAME -C $CACHE_DIR
 mv $CACHE_DIR/$ARCHIVE_NAME $BUILD_DIR/vendor/phantomjs
 
-echo "-----> Cloning CasperJS"
+echo "-----> Cloning CasperJS v1.0.4"
+mkdir -p ${BUILD_DIR}/vendor
 cd ${BUILD_DIR}/vendor
-git clone git://github.com/n1k0/casperjs.git
+curl https://codeload.github.com/n1k0/casperjs/tar.gz/1.0.4 > casperjs-1.0.4.tar.gz
+tar -xzf casperjs-1.0.4.tar.gz
+rm casperjs-1.0.4.tar.gz
+mv casperjs-1.0.4 casperjs
 
 echo "-----> Installing .profile.d/casperjs.sh"
 cd ${BUILD_DIR}
